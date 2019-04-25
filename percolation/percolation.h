@@ -7,10 +7,26 @@ using namespace std;
 class UnionFind
 {
     private:
-        vector < vector <int> > grid;
-        vector <float>::size
+        int size;
+        // vector <int> depth;
+        // vector <int> id;
 
     public:
+        //constructors
+        UnionFind();
+        UnionFind(int);
+
+        //find function
+        // int root(int p);
+
+        // //connected function
+        // bool connected(int p, int q);
+
+        // //union function
+        // void _union(int p, int q);
+
+
+
 
 };
 

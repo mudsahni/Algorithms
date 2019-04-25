@@ -57,10 +57,10 @@ class Grid {
             for(let col=0;col<this.size;col++) {
                 let rn = Math.random();
                 if(rn > this.prob) {
-                    rn = 1;
+                    rn = 0;
                 }
                 else {
-                    rn = 0;
+                    rn = 1;
                 };
                 temp.push(rn);
             };
@@ -134,5 +134,29 @@ class Grid {
 };
 
 let G = new Grid(10,0.9);
-console.log(G.grid);
-console.log(G.percolates());
+
+
+const renderGrid = function (grid_value) {
+    const G_grid = new Grid(5,grid_value);
+    
+    document.querySelector('#notes').innerHTML = ''
+    const percolates = document.createElement('p');
+    percolates.textContent = G_grid.percolates();
+    const show_grid = document.createElement('p');
+    show_grid.textContent = G_grid.grid;
+    document.querySelector('#notes').appendChild(percolates);
+    document.querySelector('#notes').appendChild(show_grid);
+    console.log(G_grid.grid);
+};
+
+document.querySelector('#select_grid_value').addEventListener('input', function (e) {
+    renderGrid(e.target.value);
+    console.log(`hello: ${e.target.value}`);
+
+});
+
+let canvas = document.querySelector('canvas');
+let ctx = canvas.getContext("2d");
+let imgData = ctx.createImageData(120, 120);
+
+ctx.putImageData(G.grid, 0, 0);
