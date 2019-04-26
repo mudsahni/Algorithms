@@ -134,13 +134,6 @@ public class Percolation {
         pf.genArrays(10, 10);
         boolean result = pf.percolates();
         System.out.println(result);
-//        for (int i = 0; i < pf.size; i++) {
-//            for (int j = 0; j < pf.size; j++) {
-//                System.out.println(pf.grid[i][j]);
-//            }
-//        }
-//        int c = new Random().nextInt(2);
-//        System.out.println("number is: " + c);
     }
 
 
