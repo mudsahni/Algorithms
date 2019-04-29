@@ -1,7 +1,7 @@
 public class ThreeSum
 {
 
-    public static int count(int [] a)
+    public static int count(int[] a)
     {
         int N = a.length;
         int count = 0;

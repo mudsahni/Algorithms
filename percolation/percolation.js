@@ -1,4 +1,4 @@
-
+    
 class UnionFind {
     constructor(size) {
         this.size = size;
@@ -133,11 +133,11 @@ class Grid {
     }
 };
 
-let G = new Grid(10,0.9);
+// let G = new Grid(10,0.9);
 
 
-const renderGrid = function (grid_value) {
-    const G_grid = new Grid(5,grid_value);
+const renderGrid = function (grid_size, prob_value) {
+    const G_grid = new Grid(grid_size, prob_value);
     
     document.querySelector('#notes').innerHTML = ''
     const percolates = document.createElement('p');
@@ -149,14 +149,28 @@ const renderGrid = function (grid_value) {
     console.log(G_grid.grid);
 };
 
-document.querySelector('#select_grid_value').addEventListener('input', function (e) {
-    renderGrid(e.target.value);
-    console.log(`hello: ${e.target.value}`);
-
+document.querySelector('#select_grid_value').addEventListener('input', function(e) {
+    createGrid(e.target.value);
+    console.log(e.target.value);
 });
 
-let canvas = document.querySelector('canvas');
-let ctx = canvas.getContext("2d");
-let imgData = ctx.createImageData(120, 120);
+// document.querySelector('#select_prob_value').addEventListener('input', function (e) {
+//     renderGrid(10, e.target.value);
+//     console.log(`hello: ${e.target.value}`);
 
-ctx.putImageData(G.grid, 0, 0);
+// });
+let createGrid = function(grid_size) {
+    var c = document.getElementById("myCanvas");
+
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
+    var imgData = ctx.createImageData(grid_size, grid_size);
+    var i;
+    for (i = 0; i < imgData.data.length; i+=4) {
+        imgData.data[i + 0] = 190; // R value
+        imgData.data[i + 1] = 0; // G value
+        imgData.data[i + 2] = 210; // B value
+        imgData.data[i + 3] = 255; // A value    
+    };
+    ctx.putImageData(imgData, grid_size, grid_size);
+};

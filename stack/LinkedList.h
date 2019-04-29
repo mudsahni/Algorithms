@@ -7,18 +7,19 @@ using namespace std;
 class Node
 {   
     private:
-        Node* first;
         string item;
-        Node* next;
     public:
         //constructors
         Node();
+
+        //return item
+        string showItem();
 
         //isEmpty
         bool isEmpty();
 
         //push
-        // void push(string);
+        void push(string);
 
         // //pop
         // string pop();
