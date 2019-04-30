@@ -92,6 +92,16 @@ public class Queue
       Q.enqueue(Y);
       System.out.println("First Q node: " + Q.first.getItem());
       System.out.println("Last Q node: " + Q.last.getItem());
+      System.out.println("Addin `å  1       g to Q");
+
+      Node Z = new Node("Z");
+      Q.enqueue(Z);
+
+      String OUT = Q.dequeue();
+      System.out.println("Removed item: " + OUT);
+
+      System.out.println("Last Q node: " + Q.last.getItem());
+      System.out.println("First Q node: " + Q.first.getItem());
 
     };
 
