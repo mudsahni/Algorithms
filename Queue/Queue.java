@@ -1,18 +1,18 @@
-class Node
+class Node<Item>
 {
-    private String item;
+    private Item item;
     private Node next = null;
 
-    public Node(String val) {
+    public Node(Item val) {
         item = val;
     };
 
-    public String getItem()
+    public Item getItem()
     {
       return item;
     };
 
-    public void setItem(String val)
+    public void setItem(Item val)
     {
       item = val;
     };
@@ -29,12 +29,12 @@ class Node
 };
 
 
-public class Queue
+public class Queue<Item>
 {
-    private Node first;
-    private Node last;
-    private Node old;
-    private String item;
+    private Node<Item> first;
+    private Node<Item> last;
+    private Node<Item> old;
+    private Item item;
 
     public Queue()
     {
@@ -65,7 +65,7 @@ public class Queue
 
     };
 
-    public String dequeue()
+    public Item dequeue()
     {
         item = first.getItem();
         first = first.getNext();
@@ -81,9 +81,9 @@ public class Queue
 
     public static void main(String[] args)
     {
-      Node X = new Node("X");
-      Node Y = new Node("Y");
-      Queue Q = new Queue();
+      Node<String> X = new Node<String>("X");
+      Node<String> Y = new Node<String>("Y");
+      Queue<String> Q = new Queue<String>();
 
       System.out.println("Is Q empty: " + Q.isEmpty());
       System.out.println("Adding to Q");
@@ -94,11 +94,11 @@ public class Queue
       System.out.println("Last Q node: " + Q.last.getItem());
       System.out.println("Addin `å  1       g to Q");
 
-      Node Z = new Node("Z");
+      Node<String> Z = new Node<String>("Z");
       Q.enqueue(Z);
 
-      String OUT = Q.dequeue();
-      System.out.println("Removed item: " + OUT);
+//      Item<String> OUT = Q.dequeue();
+      System.out.println("Removed item: " + Q.dequeue());
 
       System.out.println("Last Q node: " + Q.last.getItem());
       System.out.println("First Q node: " + Q.first.getItem());
