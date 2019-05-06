@@ -104,6 +104,18 @@ public class TwoStack<T> {
              {
                  values.push(values.pop() * values.pop());
              }
+             else if(op.equals("/"))
+             {
+                 values.push(values.pop() / values.pop());
+             }
+             else if(op.equals("-"))
+             {
+                 values.push(values.pop() - values.pop());
+             }
+             else if(op.equals("%"))
+             {
+                 values.push(values.pop() % values.pop())
+             }
             }
 
             else
