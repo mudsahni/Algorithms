@@ -1,10 +1,11 @@
 class Node<Item>
 {
     private Item item;
-    private Node next = null;
+    private Node<Item> next;
 
     public Node(Item val) {
         item = val;
+        next = null;
     };
 
     public Item getItem()

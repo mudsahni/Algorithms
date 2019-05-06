@@ -15,10 +15,10 @@ public class Stack<Item>
 
     public void push(Item item)
     {
-        Node old_first = first;
+        Node oldFirst = first;
         first = new Node();
         first.item = item;
-        first.next = old_first;
+        first.next = oldFirst;
     };
 
     public Item pop()
