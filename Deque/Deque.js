@@ -37,6 +37,11 @@ class Deque {
     };
 
     addFirst(node) {
+        if(node == null)
+        {
+            throw "You cannot add a null element.";
+        }
+
         let old_first = this.first;
         this.first = node;
         this.first.prev = null;
@@ -50,6 +55,11 @@ class Deque {
     };
 
     addLast(node) {
+        if(node == null)
+        {
+            throw "You cannot add a null element";
+        }
+
         let old_last = this.last;
         this.last = node;
         this.last.next = null;
@@ -63,6 +73,9 @@ class Deque {
     };
 
     removeFirst() {
+        if(this.isEmpty() == true){
+            throw "The Deque is empty.";
+        }
         let item = this.first.item;
         this.first = this.first.next;
         this.first.prev = null;
@@ -70,6 +83,9 @@ class Deque {
     };
 
     removeLast() {
+        if(this.isEmpty() == true) {
+            throw "The Deque is empty.";
+        }
         let item = this.last.item;
         this.last = this.last.prev;
         this.last.next = null;
@@ -81,6 +97,7 @@ let X = new Node("X");
 let Y = new Node("Y");
 let Z = new Node("Z");
 let D = new Deque();
+//D.removeFirst();
 console.log(`Size of D: ${D.size()}`);
 D.addFirst(X);
 console.log(`Size of D: ${D.size()}`);
@@ -90,6 +107,7 @@ console.log(`Size of D: ${D.size()}`);
 console.log(`First node of D: ${D.first.item}`);
 console.log(`Last node of D: ${D.last.item}`);
 D.addLast(Z);
+//D.addLast(null);
 console.log(`Size of D: ${D.size()}`);
 console.log(`First node of D: ${D.first.item}`);
 console.log(`Last node of D: ${D.last.item}`);

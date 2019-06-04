@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 class Node<Item> {
     private Item item;
     private Node<Item> next;
@@ -81,6 +83,10 @@ public class Deque<Item> {
     ;
 
     public void addLast(Node<Item> node) {
+        if (node == null) {
+            throw new IllegalArgumentException("You cannot enter a null element.");
+        }
+
         Node<Item> old_last = last;
         last = node;
         if (first == null) {
@@ -108,6 +114,10 @@ public class Deque<Item> {
     ;
 
     public Item removeFirst() {
+        if (isEmpty() == true) {
+            throw new NoSuchElementException("The Deque is empty.");
+        }
+
         Item item = first.getItem();
         first = first.getNext();
         first.setPrev(null);
@@ -117,6 +127,10 @@ public class Deque<Item> {
     ;
 
     public Item removeLast() {
+        if (isEmpty() == true) {
+            throw new NoSuchElementException("The Deque is empty.");
+        }
+
         Item item = last.getItem();
         last = last.getPrev();
         last.setNext(null);
@@ -130,10 +144,12 @@ public class Deque<Item> {
         Node<String> Y = new Node<String>("Y");
         Node<String> Z = new Node<String>("Z");
         Deque<String> D = new Deque<String>();
+        //D.removeFirst();
         System.out.println("Is D empty: " + D.isEmpty());
         D.addLast(X);
         D.addFirst(Y);
         D.addLast(Z);
+        //D.addLast(null);
         System.out.println("Is D empty: " + D.isEmpty());
         System.out.println("D size: " + D.size());
         System.out.println("First element of D: " + D.first.getItem());
