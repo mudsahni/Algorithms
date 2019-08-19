@@ -97,8 +97,8 @@ class DateRange(object):
         return self.range >= r2
     
     def get_overlap(self, r2):
-        latest_start = max(self.start, r2.start)
-        earliest_end = min(self.end, r2.end)
+        latest_start = max(self.range.start, r2.range.start)
+        earliest_end = min(self.range.end, r2.range.end)
         delta = (earliest_end - latest_start).days + 1
         return max(0, delta)
     
@@ -132,6 +132,22 @@ randomDate = starts[0]
 isOverlap = get_overlaps([randomDate],)
 
 def earliest_job_first(date_ranges):
-    earliest_date = min(date_ranges)
+    dates_to_take = []
+    sorted_date_ranges = np.argsort(date_ranges)
+    dates_to_take.append(date_ranges[sorted_date_ranges[0]])
+    start = 0
+    for other_date in sorted_date_ranges[1:]:
+        temp = []
+        print(f"Check Date: {date_ranges[other_date]}")
+        for date in dates_to_take:
+            print(f"Check against: {date}")
+            temp.append(date_ranges[other_date].is_overlap(date))
+        if not any(temp):
+            dates_to_take.append(date_ranges[other_date])
+            print(f"Appending to dates. {other_date}")
+    return dates_to_take
+            
+            
+    
     
     
